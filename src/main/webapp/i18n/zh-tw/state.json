@@ -1,0 +1,11 @@
+{
+    "backendApp": {
+        "State" : {
+            "null": "",
+            "SELECT_FOR_DEVELOPER": "SELECT_FOR_DEVELOPER",
+            "BACKLOG": "BACKLOG",
+            "IN_PROGRESS": "IN_PROGRESS",
+            "DONE": "DONE"
+        }
+    }
+}

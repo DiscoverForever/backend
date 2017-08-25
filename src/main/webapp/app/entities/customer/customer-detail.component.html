@@ -1,0 +1,53 @@
+
+<div *ngIf="customer">
+    <h2><span jhiTranslate="backendApp.customer.detail.title">Customer</span> {{customer.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="backendApp.customer.username">Username</span></dt>
+        <dd>
+            <span>{{customer.username}}</span>
+        </dd>
+        <dt><span jhiTranslate="backendApp.customer.password">Password</span></dt>
+        <dd>
+            <span>{{customer.password}}</span>
+        </dd>
+        <dt><span jhiTranslate="backendApp.customer.nickname">Nickname</span></dt>
+        <dd>
+            <span>{{customer.nickname}}</span>
+        </dd>
+        <dt><span jhiTranslate="backendApp.customer.avatar">Avatar</span></dt>
+        <dd>
+            <span>{{customer.avatar}}</span>
+        </dd>
+        <dt><span jhiTranslate="backendApp.customer.age">Age</span></dt>
+        <dd>
+            <span>{{customer.age}}</span>
+        </dd>
+        <dt><span jhiTranslate="backendApp.customer.sex">Sex</span></dt>
+        <dd>
+            <span jhiTranslate="{{'backendApp.Sex.' + customer.sex}}">{{customer.sex}}</span>
+        </dd>
+        <dt><span jhiTranslate="backendApp.customer.email">Email</span></dt>
+        <dd>
+            <span>{{customer.email}}</span>
+        </dd>
+        <dt><span jhiTranslate="backendApp.customer.mobilePhoneNumber">Mobile Phone Number</span></dt>
+        <dd>
+            <span>{{customer.mobilePhoneNumber}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'customer/'+ customer.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

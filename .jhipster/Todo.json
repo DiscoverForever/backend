@@ -1,0 +1,41 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "customer",
+            "otherEntityName": "customer",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "startTime",
+            "fieldType": "ZonedDateTime",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "endTime",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "state",
+            "fieldType": "State",
+            "fieldValues": "SELECT_FOR_DEVELOPER,BACKLOG,IN_PROGRESS,DONE"
+        }
+    ],
+    "changelogDate": "20170825033445",
+    "entityTableName": "todo",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no"
+}

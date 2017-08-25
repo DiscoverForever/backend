@@ -1,0 +1,9 @@
+{
+    "backendApp": {
+        "Sex" : {
+            "null": "",
+            "BOY": "BOY",
+            "GIRL": "GIRL"
+        }
+    }
+}

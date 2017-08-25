@@ -1,0 +1,25 @@
+entity Customer {
+	username String required,
+    password String required,
+    nickname String required,
+    avatar String required,
+    age Integer required,
+    sex Sex required,
+    email String required,
+    mobilePhoneNumber String required
+}
+entity Todo {
+	name String required,
+    startTime ZonedDateTime required,
+    endTime ZonedDateTime,
+    state State
+}
+enum Sex {
+	BOY, GIRL
+}
+enum State {
+	SELECT_FOR_DEVELOPER, BACKLOG, IN_PROGRESS, DONE
+}
+relationship OneToMany {
+	Customer{todo} to Todo
+}

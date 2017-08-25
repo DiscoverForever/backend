@@ -1,0 +1,119 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myCustomerLabel" jhiTranslate="backendApp.customer.home.createOrEditLabel">Create or edit a Customer</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!customer.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="customer.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="backendApp.customer.username" for="field_username">Username</label>
+            <input type="text" class="form-control" name="username" id="field_username"
+                [(ngModel)]="customer.username" required />
+            <div [hidden]="!(editForm.controls.username?.dirty && editForm.controls.username?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.username?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="backendApp.customer.password" for="field_password">Password</label>
+            <input type="text" class="form-control" name="password" id="field_password"
+                [(ngModel)]="customer.password" required />
+            <div [hidden]="!(editForm.controls.password?.dirty && editForm.controls.password?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.password?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="backendApp.customer.nickname" for="field_nickname">Nickname</label>
+            <input type="text" class="form-control" name="nickname" id="field_nickname"
+                [(ngModel)]="customer.nickname" required />
+            <div [hidden]="!(editForm.controls.nickname?.dirty && editForm.controls.nickname?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.nickname?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="backendApp.customer.avatar" for="field_avatar">Avatar</label>
+            <input type="text" class="form-control" name="avatar" id="field_avatar"
+                [(ngModel)]="customer.avatar" required />
+            <div [hidden]="!(editForm.controls.avatar?.dirty && editForm.controls.avatar?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.avatar?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="backendApp.customer.age" for="field_age">Age</label>
+            <input type="number" class="form-control" name="age" id="field_age"
+                [(ngModel)]="customer.age" required />
+            <div [hidden]="!(editForm.controls.age?.dirty && editForm.controls.age?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.age?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.age?.errors?.number" jhiTranslate="entity.validation.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="backendApp.customer.sex" for="field_sex">Sex</label>
+            <select class="form-control" name="sex" [(ngModel)]="customer.sex" id="field_sex"  required>
+                <option value="BOY">{{'backendApp.Sex.BOY' | translate}}</option>
+                <option value="GIRL">{{'backendApp.Sex.GIRL' | translate}}</option>
+            </select>
+            <div [hidden]="!(editForm.controls.sex?.dirty && editForm.controls.sex?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.sex?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="backendApp.customer.email" for="field_email">Email</label>
+            <input type="text" class="form-control" name="email" id="field_email"
+                [(ngModel)]="customer.email" required />
+            <div [hidden]="!(editForm.controls.email?.dirty && editForm.controls.email?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.email?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="backendApp.customer.mobilePhoneNumber" for="field_mobilePhoneNumber">Mobile Phone Number</label>
+            <input type="text" class="form-control" name="mobilePhoneNumber" id="field_mobilePhoneNumber"
+                [(ngModel)]="customer.mobilePhoneNumber" required />
+            <div [hidden]="!(editForm.controls.mobilePhoneNumber?.dirty && editForm.controls.mobilePhoneNumber?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.mobilePhoneNumber?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>
